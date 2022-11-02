@@ -1,0 +1,13 @@
+version: 2
+enable-beta-ecosystems: true
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "10:00"
+      timezone: "Europe/Paris"
+    assignees:
+      - "Ziedelth"
+    reviewers:
+      - "Ziedelth"
