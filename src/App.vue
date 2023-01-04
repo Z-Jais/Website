@@ -25,6 +25,8 @@ export default {
   --light: #faf6f7;
   --dark: #313237;
   --variant: #a38e97;
+
+  --episode-line-height: 25px;
 }
 
 * {
