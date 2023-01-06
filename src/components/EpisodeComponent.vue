@@ -1,25 +1,28 @@
 <template>
   <div class="border">
-    <div class="row">
-      <div class="row-9">
-        <div class="row" style="margin-bottom: 5px">
-          <img :src="`https://beta-api.ziedelth.fr/platforms/attachment/${episode.platform.uuid}`" width="25" height="25" class="round" :alt="episode.platform.name">
-          <div style="width: 200px; height: var(--episode-line-height); font-weight: bold;">{{ episode.platform.name }}</div>
+    <div style="padding: 15px">
+      <div class="row">
+        <div class="col-9 overflow">
+          <div class="bold" style="display: flex; gap: 5px; align-items: center">
+            <img :src="`https://beta-api.ziedelth.fr/platforms/attachment/${episode.platform.uuid}`" alt="Platform image" style="width: var(--episode-line-height)">
+            {{ episode.platform.name }}
+          </div>
+
+          <div class="bold" style="margin-top: 5px">{{ episode.anime.name }}</div>
+          <div style="margin-top: 5px">{{ episode.title || 'Truc bidon' }}</div>
+          <div style="margin-top: 5px">Saison {{ episode.season }} • Épisode {{ episode.number }} VOSTFR</div>
+          <div style="margin-top: 5px">{{ episode.duration }}</div>
         </div>
 
-        <div class="overflow" style="width: 75%; height: var(--episode-line-height); margin-bottom: 5px; font-weight: bold;">{{ episode.anime.name }}</div>
-        <div class="overflow" style="width: 50%; height: var(--episode-line-height); margin-bottom: 5px; font-weight: bold;">{{ episode.title }}</div>
-        <div style="width: 85%; height: var(--episode-line-height); margin-bottom: 5px">Saison {{ episode.season }} • Épisode {{ episode.number }} VOSTFR</div>
-        <div style="width: 30%; height: var(--episode-line-height);">{{ episode.duration }}</div>
+        <div class="col-1">
+          <img :src="`https://beta-api.ziedelth.fr/animes/attachment/${episode.anime.uuid}`" alt="Anime image" style="width: 100%">
+        </div>
       </div>
 
-      <div class="row-1">
-        <img class="rounded" :src="`https://beta-api.ziedelth.fr/animes/attachment/${episode.anime.uuid}`" :alt="episode.anime.name" style="height: 180px" />
-      </div>
+      <img :src="`https://beta-api.ziedelth.fr/episodes/attachment/${episode.uuid}`" alt="Episode image" style="width: 100%">
+
+      <div style="margin-top: 5px">{{ episode.releaseDate }}</div>
     </div>
-
-    <img class="rounded" :src="`https://beta-api.ziedelth.fr/episodes/attachment/${episode.uuid}`" alt="Episode image" style="width: auto; margin: 8px; object-fit: none; object-position: center" />
-    <div class="shimmer" style="width: 40%; height: var(--episode-line-height); margin: 8px" />
   </div>
 </template>
 
@@ -36,40 +39,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.overflow {
-  text-overflow: ellipsis;
-  overflow:hidden;
-  white-space: nowrap;
-}
-
 .border {
   border: 1px solid #f6f7f8;
   border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .row {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  padding: 8px;
-
-  align-items: center;
-  align-content: center;
-
-  .row-9 {
-    flex: 9;
-  }
-
-  .row-1 {
-    flex: 3;
-  }
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-spacing: 5px;
 }
 
-.round {
-  border-radius: 50%;
+.col-9 {
+  display: table-cell;
+  width: 75%;
+  vertical-align: middle;
 }
 
-.rounded {
-  border-radius: 5px;
+.col-1 {
+  display: table-cell;
+  width: 25%;
+  vertical-align: middle;
+}
+
+.bold {
+  font-weight: bold;
 }
 </style>
