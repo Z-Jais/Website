@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       isLoading: false,
-      limit: 9,
+      limit: 12,
       page: 1,
       episodes: [],
     }
