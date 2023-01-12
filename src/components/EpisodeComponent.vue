@@ -4,8 +4,9 @@
       <div class="row">
         <div class="col-10 overflow">
           <div class="bold platform-row">
-            <img :alt="`${episode.platform.name} image`"
-                 :src="`https://beta-api.ziedelth.fr/platforms/attachment/${episode.platform.uuid}`" class="platform-image">
+            <img :alt="`${episode.platform.name} image`" :src="`https://beta-api.ziedelth.fr/platforms/attachment/${episode.platform.uuid}`" class="platform-image"
+                 height="25"
+                 width="25">
             {{ episode.platform.name }}
           </div>
 
@@ -27,12 +28,14 @@
 
         <div class="col-2">
           <img :alt="`${episode.anime.name} image`"
-               :src="`https://beta-api.ziedelth.fr/animes/attachment/${episode.anime.uuid}`" class="image">
+               :src="`https://beta-api.ziedelth.fr/animes/attachment/${episode.anime.uuid}`" class="image" height="500"
+               width="350">
         </div>
       </div>
 
-      <img :src="`https://beta-api.ziedelth.fr/episodes/attachment/${episode.uuid}`" alt="Episode image"
-           class="image mt-1">
+      <img :src="`https://beta-api.ziedelth.fr/episodes/attachment/${episode.uuid}`" alt="Episode image" class="image mt-1"
+           height="360"
+           width="640">
 
       <div class="mt-1">{{ since }}</div>
     </div>
