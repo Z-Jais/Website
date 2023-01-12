@@ -22,9 +22,9 @@ export default {
   --logo-size: 32px;
   --line-height: 1.5;
 
-  --light: #faf6f7;
-  --dark: #313237;
-  --variant: #a38e97;
+  --light: #F2DEC4;
+  --dark: #260A08;
+  --variant: #590E0E;
 
   --episode-line-height: 25px;
 }
