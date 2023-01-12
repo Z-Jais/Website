@@ -7,7 +7,3 @@ export default {
   name: "HomeView"
 }
 </script>
-
-<style scoped>
-
-</style>

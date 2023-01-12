@@ -7,7 +7,3 @@ export default {
   name: "AnimesView"
 }
 </script>
-
-<style scoped>
-
-</style>
