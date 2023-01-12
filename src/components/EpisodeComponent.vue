@@ -147,6 +147,7 @@ export default {
   display: flex;
   gap: 5px;
   align-items: center;
+  margin-bottom: 5px;
 }
 
 .platform-image {

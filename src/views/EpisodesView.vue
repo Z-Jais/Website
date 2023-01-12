@@ -1,19 +1,20 @@
 <template>
-  <div class="list">
-    <div v-for="episode in episodes" :key="episode.uuid" class="item">
-      <EpisodeLoadingComponent v-if="episode.loadingElement" />
-      <EpisodeComponent :episode="episode" v-else />
-    </div>
+  <div v-if="isLoading" class="center">
+    <SpinnerComponent />
+  </div>
+
+  <div v-else class="list">
+    <EpisodeComponent v-for="episode in episodes" :key="episode.uuid" class="item" :episode="episode" />
   </div>
 </template>
 
 <script>
 import EpisodeComponent from "@/components/EpisodeComponent.vue";
-import EpisodeLoadingComponent from "@/components/EpisodeLoadingComponent.vue";
+import SpinnerComponent from "@/components/SpinnerComponent.vue";
 
 export default {
   name: "EpisodesView",
-  components: {EpisodeLoadingComponent, EpisodeComponent},
+  components: {SpinnerComponent, EpisodeComponent},
   data() {
     return {
       isLoading: false,
@@ -29,29 +30,16 @@ export default {
       }
 
       this.isLoading = true;
-
-      const loadingEpisodes = Array.from({length: this.limit}, () => {
-        return {
-          uuid: crypto.randomUUID(),
-          loadingElement: true,
-        }
-      });
-
-      this.episodes = [...this.episodes, ...loadingEpisodes];
-
       const response = await fetch(`https://beta-api.ziedelth.fr/episodes/country/fr/page/${this.page}/limit/${this.limit}`);
-      const episodeListWithoutLoading = this.episodes.filter(episode => !episode.loadingElement);
 
       if (!response.ok) {
-        this.episodes = episodeListWithoutLoading;
         this.isLoading = false;
         return;
       }
 
       const data = await response.json();
-      this.episodes = episodeListWithoutLoading.concat(data);
+      this.episodes.push(...data);
       this.isLoading = false;
-      console.log(this.episodes);
     },
   },
   mounted() {
@@ -88,5 +76,11 @@ export default {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
   }
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
