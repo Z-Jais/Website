@@ -4,24 +4,35 @@
       <div class="row">
         <div class="col-10 overflow">
           <div class="bold platform-row">
-            <img :src="`https://beta-api.ziedelth.fr/platforms/attachment/${episode.platform.uuid}`" :alt="`${episode.platform.name} image`" class="platform-image">
+            <img :alt="`${episode.platform.name} image`"
+                 :src="`https://beta-api.ziedelth.fr/platforms/attachment/${episode.platform.uuid}`" class="platform-image">
             {{ episode.platform.name }}
           </div>
 
-          <router-link :to="`/animes/${episode.anime.uuid}`" class="bold mt-1 anime-name">{{ episode.anime.name }}</router-link>
+          <router-link :to="`/animes/${episode.anime.uuid}`" class="bold mt-1 anime-name">{{
+              episode.anime.name
+            }}
+          </router-link>
           <div class="bold mt-1">{{ episode.title || '¯\_(ツ)_/¯' }}</div>
           <div class="mt-1">{{ information }}</div>
-          <div class="mt-1 duration"><svg width="20" height="20" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-            <path d="M216 104H100.8l111.3-29.8a7.9 7.9 0 0 0 4.8-3.8a7.5 7.5 0 0 0 .8-6l-8.3-30.9a15.8 15.8 0 0 0-19.5-11.3L35.3 63.6A15.9 15.9 0 0 0 24 83.2l8 29.9V200a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16v-88a8 8 0 0 0-8-8Zm-87-49l29.4 17l-47.7 12.8l-29.4-17Zm65-17.4l6.2 23.2l-20 5.3l-29.4-16.9ZM59.4 73.7l29.4 16.9l-43.1 11.6L39.4 79ZM208 200H48v-80h160v80Z" fill="currentColor"/>
-          </svg> {{ duration }}</div>
+          <div class="mt-1 duration">
+            <svg height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+              <path
+                  d="M216 104H100.8l111.3-29.8a7.9 7.9 0 0 0 4.8-3.8a7.5 7.5 0 0 0 .8-6l-8.3-30.9a15.8 15.8 0 0 0-19.5-11.3L35.3 63.6A15.9 15.9 0 0 0 24 83.2l8 29.9V200a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16v-88a8 8 0 0 0-8-8Zm-87-49l29.4 17l-47.7 12.8l-29.4-17Zm65-17.4l6.2 23.2l-20 5.3l-29.4-16.9ZM59.4 73.7l29.4 16.9l-43.1 11.6L39.4 79ZM208 200H48v-80h160v80Z"
+                  fill="currentColor"/>
+            </svg>
+            {{ duration }}
+          </div>
         </div>
 
         <div class="col-2">
-          <img :src="`https://beta-api.ziedelth.fr/animes/attachment/${episode.anime.uuid}`" :alt="`${episode.anime.name} image`" class="image">
+          <img :alt="`${episode.anime.name} image`"
+               :src="`https://beta-api.ziedelth.fr/animes/attachment/${episode.anime.uuid}`" class="image">
         </div>
       </div>
 
-      <img :src="`https://beta-api.ziedelth.fr/episodes/attachment/${episode.uuid}`" class="image mt-1" alt="Episode image">
+      <img :src="`https://beta-api.ziedelth.fr/episodes/attachment/${episode.uuid}`" alt="Episode image"
+           class="image mt-1">
 
       <div class="mt-1">{{ since }}</div>
     </div>

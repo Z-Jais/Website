@@ -1,10 +1,10 @@
 <template>
   <div v-if="isLoading" class="center">
-    <SpinnerComponent />
+    <SpinnerComponent/>
   </div>
 
   <div v-else class="list">
-    <EpisodeComponent v-for="episode in episodes" :key="episode.uuid" class="item" :episode="episode" />
+    <EpisodeComponent v-for="episode in episodes" :key="episode.uuid" :episode="episode" class="item"/>
   </div>
 </template>
 
