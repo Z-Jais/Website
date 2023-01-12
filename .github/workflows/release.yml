@@ -35,5 +35,5 @@ jobs:
 
       - name: SSH Commands
         run: |
-          ssh -C -p 2222 ${{ secrets.SSH_DESTINATION }} "cd ${{ secrets.FOLDER }} && rm -rfv !(\"attachments\")"
+          ssh -C -p 2222 ${{ secrets.SSH_DESTINATION }} 'cd ${{ secrets.FOLDER }} && rm -rfv !("attachments")'
           scp -P 2222 -r dist/ ${{ secrets.SSH_DESTINATION }}:${{ secrets.FOLDER }}
