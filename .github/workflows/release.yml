@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - stable
+
+jobs:
+  build:
+    name: Build and release
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Install SSH KEY
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+
+      - name: Adding Known Hosts
+        run: ssh-keyscan -p 2222 -H ${{ secrets.SSH_HOST_IP }} >> ~/.ssh/known_hosts
+
+      - name: SSH Commands
+        run: |
+          ssh -C -p 2222 ${{ secrets.SSH_DESTINATION }} "cd ${{ secrets.FOLDER }} && rm -rfv !('attachments')"
+          scp -P 2222 -r dist/ ${{ secrets.SSH_DESTINATION }}:${{ secrets.FOLDER }}
