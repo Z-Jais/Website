@@ -72,6 +72,11 @@ export default {
     duration() {
       // Format this.episode.duration to 00:00:00
       const duration = this.episode.duration;
+
+      if (duration === null || duration === undefined || duration <= 0) {
+        return '??:??';
+      }
+
       const hours = Math.floor(duration / 3600);
       const minutes = Math.floor((duration - (hours * 3600)) / 60);
       const seconds = duration - (hours * 3600) - (minutes * 60);
