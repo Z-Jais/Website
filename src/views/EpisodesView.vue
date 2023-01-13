@@ -24,26 +24,45 @@ export default {
     }
   },
   methods: {
-    async getEpisodes() {
+    async getEpisodes(indicator = true) {
       if (this.isLoading) {
         return;
       }
 
-      this.isLoading = true;
+
+      if (indicator) {
+        this.isLoading = true;
+      }
+
       const response = await fetch(`https://beta-api.ziedelth.fr/episodes/country/fr/page/${this.page}/limit/${this.limit}`);
 
       if (!response.ok) {
-        this.isLoading = false;
+        if (indicator) {
+          this.isLoading = false;
+        }
+
         return;
       }
 
       const data = await response.json();
       this.episodes.push(...data);
-      this.isLoading = false;
+
+      if (indicator) {
+        this.isLoading = false;
+      }
     },
   },
   mounted() {
     this.getEpisodes();
+
+    window.onscroll = () => {
+      const bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+
+      if (bottomOfWindow) {
+        this.page++;
+        this.getEpisodes(false);
+      }
+    }
   },
 }
 </script>
