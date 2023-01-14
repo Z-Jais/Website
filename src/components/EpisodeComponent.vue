@@ -3,16 +3,19 @@
     <div style="padding: 10px">
       <div class="row">
         <div class="col-10 overflow">
-          <div class="bold platform-row">
-            <img :alt="`${episode.platform.name} image`" :src="`https://beta-api.ziedelth.fr/platforms/attachment/${episode.platform.uuid}`" class="platform-image"
-                 height="25"
-                 width="25">
-            {{ episode.platform.name }}
-          </div>
+          <a :href="episode.platform.url" target="_blank">
+            <div class="bold platform-row">
+              <img :alt="`${episode.platform.name} image`"
+                   :src="`https://beta-api.ziedelth.fr/platforms/attachment/${episode.platform.uuid}`"
+                   class="platform-image"
+                   height="25"
+                   width="25">
+              {{ episode.platform.name }}
+            </div>
+          </a>
 
-          <router-link :to="`/animes/${episode.anime.uuid}`" class="bold mt-1 anime-name">{{
-              episode.anime.name
-            }}
+          <router-link :to="`/animes/${episode.anime.uuid}`" class="bold mt-1 anime-name">
+            {{ episode.anime.name }}
           </router-link>
           <div class="bold mt-1">{{ episode.title || '¯\_(ツ)_/¯' }}</div>
           <div class="mt-1">{{ information }}</div>
@@ -27,15 +30,21 @@
         </div>
 
         <div class="col-2">
-          <img :alt="`${episode.anime.name} image`"
-               :src="`https://beta-api.ziedelth.fr/animes/attachment/${episode.anime.uuid}`" class="image" height="500"
-               width="350">
+          <router-link :to="`/animes/${episode.anime.uuid}`">
+            <img :alt="`${episode.anime.name} image`"
+                 :src="`https://beta-api.ziedelth.fr/animes/attachment/${episode.anime.uuid}`" class="image"
+                 height="500"
+                 width="350">
+          </router-link>
         </div>
       </div>
 
-      <img :src="`https://beta-api.ziedelth.fr/episodes/attachment/${episode.uuid}`" alt="Episode image" class="image mt-1"
-           height="360"
-           width="640">
+      <a :href="episode.url" target="_blank">
+        <img :src="`https://beta-api.ziedelth.fr/episodes/attachment/${episode.uuid}`" alt="Episode image"
+             class="image mt-1"
+             height="360"
+             width="640">
+      </a>
 
       <div class="mt-1">{{ since }}</div>
     </div>
@@ -72,6 +81,11 @@ export default {
     duration() {
       // Format this.episode.duration to 00:00:00
       const duration = this.episode.duration;
+
+      if (duration === null || duration === undefined || duration <= 0) {
+        return '??:??';
+      }
+
       const hours = Math.floor(duration / 3600);
       const minutes = Math.floor((duration - (hours * 3600)) / 60);
       const seconds = duration - (hours * 3600) - (minutes * 60);
@@ -187,6 +201,11 @@ export default {
 
 .anime-name {
   color: var(--variant);
+  text-decoration: none;
+}
+
+a {
+  color: inherit;
   text-decoration: none;
 }
 </style>

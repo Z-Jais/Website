@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <img alt="Vue logo" class="navbar-icon" src="../assets/icon.webp" width="32" height="32">
+    <img alt="Vue logo" class="navbar-icon" height="32" src="../assets/icon.webp" width="32">
     <ul>
       <li v-for="link in links" :key="link.name">
         <router-link :to="link.to" exact-active-class="active">{{ link.name }}</router-link>
