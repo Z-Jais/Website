@@ -6,6 +6,7 @@ const routes = [
     {path: '/', component: () => import('./views/HomeView.vue')},
     {path: '/episodes', component: () => import('./views/EpisodesView.vue')},
     {path: '/animes', component: () => import('./views/AnimesView.vue')},
+    {path: '/privacy', component: () => import('./views/CGUView.vue')},
 ]
 
 const router = createRouter({
