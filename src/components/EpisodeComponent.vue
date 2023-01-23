@@ -40,10 +40,12 @@
       </div>
 
       <a :href="episode.url" target="_blank">
-        <img :src="`https://beta-api.ziedelth.fr/episodes/attachment/${episode.uuid}`" alt="Episode image"
-             class="image mt-1"
-             height="360"
-             width="640">
+        <img v-if="!imageError" :src="`https://beta-api.ziedelth.fr/episodes/attachment/${this.episode.uuid}`"
+             alt="Episode image" class="image mt-1" height="360" width="640" @error="imageError = true">
+        <div v-else class="mt-1 bold border"
+             style="background-color: #000000; color: #ffffff; padding: 10px; width: 100%; min-height: 340px; text-align: center;">
+          Image indisponible
+        </div>
       </a>
 
       <div class="mt-1">{{ since }}</div>
@@ -59,6 +61,11 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  data() {
+    return {
+      imageError: false,
+    };
   },
   computed: {
     information() {

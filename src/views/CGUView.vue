@@ -17,7 +17,8 @@
 
     <p>Les présentes conditions générales d'utilisation ont pour objet l'encadrement juridique de l’utilisation du site
       jais.ziedelth.fr et de ses services.</p>
-    <p>Le site Internet <a class="text-decoration-none" href="https://jais.ziedelth.fr">https://jais.ziedelth.fr</a> est un
+    <p>Le site Internet <a class="text-decoration-none" href="https://jais.ziedelth.fr">https://jais.ziedelth.fr</a> est
+      un
       service d’actualités en rapport avec les mangas et les animés.</p>
     <p>Les conditions générales d'utilisation doivent être acceptées par tout Utilisateur, et son accès au site vaut
       acceptation de ces conditions.</p>
@@ -26,12 +27,14 @@
 
     <p>Les présentes conditions générales d'utilisation sont conclues pour une durée indéterminée. Le contrat produit
       ses effets à l'égard de l'Utilisateur à compter du début de l’utilisation du service.</p>
-    <p>Le site jais.ziedelth.fr se réserve le droit de modifier les clauses de ces conditions générales d’utilisation à tout
+    <p>Le site jais.ziedelth.fr se réserve le droit de modifier les clauses de ces conditions générales d’utilisation à
+      tout
       moment et sans justification.</p>
 
     <h2>Article 3 - Accès au site</h2>
 
-    <p>Tout Utilisateur ayant accès à internet peut accéder gratuitement et depuis n’importe où au site jais.ziedelth.fr. Les
+    <p>Tout Utilisateur ayant accès à internet peut accéder gratuitement et depuis n’importe où au site
+      jais.ziedelth.fr. Les
       frais supportés par l’Utilisateur pour y accéder (connexion internet, matériel informatique, etc.) ne sont pas à
       la charge de l’Éditeur.</p>
     <p>Le site et ses différents services peuvent être interrompus ou suspendus par l’Éditeur, notamment à l’occasion
@@ -161,7 +164,8 @@
 
     <h2>Article 6 - Cookies</h2>
 
-    <p>Le site jais.ziedelth.fr peut collecter automatiquement des informations standards. Toutes les informations collectées
+    <p>Le site jais.ziedelth.fr peut collecter automatiquement des informations standards. Toutes les informations
+      collectées
       indirectement ne seront utilisées que pour suivre le volume, le type et la configuration du trafic utilisant ce
       site, pour en développer la conception et l'agencement et à d'autres fins administratives et de planification et
       plus généralement pour améliorer le service que nous vous offrons.</p>
