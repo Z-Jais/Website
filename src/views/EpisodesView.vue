@@ -11,6 +11,7 @@
 <script>
 import EpisodeComponent from "@/components/EpisodeComponent.vue";
 import SpinnerComponent from "@/components/SpinnerComponent.vue";
+import Config from "@/config";
 
 export default {
   name: "EpisodesView",
@@ -34,7 +35,7 @@ export default {
         this.isLoading = true;
       }
 
-      const response = await fetch(`https://beta-api.ziedelth.fr/episodes/country/fr/page/${this.page}/limit/${this.limit}`);
+      const response = await fetch(`${Config.URL}episodes/country/fr/page/${this.page}/limit/${this.limit}`);
 
       if (!response.ok) {
         if (indicator) {

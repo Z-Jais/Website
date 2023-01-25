@@ -14,7 +14,7 @@
             </div>
           </a>
 
-          <router-link :to="`/animes/${episode.anime.uuid}`" class="bold mt-1 anime-name">
+          <router-link :to="animeLink" class="bold mt-1 anime-name">
             {{ episode.anime.name }}
           </router-link>
           <div class="bold mt-1">{{ episode.title || '¯\_(ツ)_/¯' }}</div>
@@ -30,7 +30,7 @@
         </div>
 
         <div class="col-2">
-          <router-link :to="`/animes/${episode.anime.uuid}`">
+          <router-link :to="animeLink">
             <img :alt="`${episode.anime.name} image`"
                  :src="`https://beta-api.ziedelth.fr/animes/attachment/${episode.anime.uuid}`" class="image"
                  height="500"
@@ -68,6 +68,9 @@ export default {
     };
   },
   computed: {
+    animeLink() {
+      return `/anime/${this.episode.anime.uuid}`;
+    },
     information() {
       let episodeType = 'Épisode';
 
@@ -125,8 +128,11 @@ export default {
       const minutes = Math.floor(seconds / 60);
       const hours = Math.floor(minutes / 60);
       const days = Math.floor(hours / 24);
+      const months = Math.floor(days / 30);
 
-      if (days > 0) {
+      if (months > 0) {
+        return 'Il y a ' + months + ' mois';
+      } else if (days > 0) {
         return 'Il y a ' + days + ' jour' + (days > 1 ? 's' : '');
       } else if (hours > 0) {
         return 'Il y a ' + hours + ' heure' + (hours > 1 ? 's' : '');

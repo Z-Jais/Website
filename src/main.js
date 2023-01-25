@@ -7,6 +7,7 @@ const routes = [
     {path: '/episodes', component: () => import('./views/EpisodesView.vue')},
     {path: '/animes', component: () => import('./views/AnimesView.vue')},
     {path: '/privacy', component: () => import('./views/CGUView.vue')},
+    {path: '/anime/:uuid', component: () => import('./views/AnimeDetailView.vue')},
 ]
 
 const router = createRouter({
