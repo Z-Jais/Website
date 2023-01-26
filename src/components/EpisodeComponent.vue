@@ -147,11 +147,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-:root {
-  --variant: #ffa41b;
-  --episode-line-height: 40px;
-}
-
 .border {
   border: 1px solid var(--variant);
   border-radius: 5px;

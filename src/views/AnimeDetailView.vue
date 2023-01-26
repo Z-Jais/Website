@@ -123,36 +123,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
-  grid-gap: 1rem;
-  padding: 1rem;
-
-  .item {
-    grid-column: auto;
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  @media (min-width: 768px) and (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .header {
   display: flex;
   justify-content: center;
@@ -192,7 +162,6 @@ export default {
     gap: 10px;
 
     .image {
-      //height: 100%;
       width: 100%;
       height: auto;
     }
