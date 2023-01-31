@@ -43,10 +43,4 @@ export default {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 </style>

@@ -7,7 +7,7 @@
             <div class="bold platform-row">
               <img :alt="`${episode.platform.name} image`"
                    :src="`https://beta-api.ziedelth.fr/platforms/attachment/${episode.platform.uuid}`"
-                   class="platform-image"
+                   class="platform-image circle-border"
                    height="25"
                    width="25">
               {{ episode.platform.name }}
@@ -188,7 +188,6 @@ export default {
 
 .platform-image {
   width: var(--episode-line-height);
-  border-radius: 50%;
 }
 
 .mt-1 {
