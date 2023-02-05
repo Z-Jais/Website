@@ -74,7 +74,7 @@ export default {
     information() {
       let episodeType = 'Épisode';
 
-      if (this.episode.episodeType.name === 'Spécial') {
+      if (this.episode.episodeType.name === 'SPECIAL') {
         episodeType = 'Spécial';
       } else if (this.episode.episodeType.name === 'FILM') {
         episodeType = 'Film';
