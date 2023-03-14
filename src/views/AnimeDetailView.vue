@@ -91,12 +91,6 @@ export default {
       }
 
       const data = await response.json();
-
-      if (data.length === 0) {
-        this.$router.push({path: "/404"});
-        return;
-      }
-
       this.anime = data[0].anime;
       this.episodes.push(...data);
 
@@ -110,14 +104,18 @@ export default {
     await this.getEpisodes();
     this.isLoading = false;
 
-    window.onscroll = () => {
-      const bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const bottomOfWindow = Math.abs(scrollTop + window.innerHeight - document.documentElement.offsetHeight) <= 5;
 
       if (bottomOfWindow) {
         this.page++;
         this.getEpisodes(false);
       }
-    }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('touchmove', handleScroll);
   },
 }
 </script>

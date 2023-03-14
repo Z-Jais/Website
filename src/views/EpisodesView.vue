@@ -56,14 +56,18 @@ export default {
   mounted() {
     this.getEpisodes();
 
-    window.onscroll = () => {
-      const bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const bottomOfWindow = Math.abs(scrollTop + window.innerHeight - document.documentElement.offsetHeight) <= 5;
 
       if (bottomOfWindow) {
         this.page++;
         this.getEpisodes(false);
       }
-    }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('touchmove', handleScroll);
   },
 }
 </script>
