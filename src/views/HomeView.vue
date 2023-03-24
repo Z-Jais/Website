@@ -1,7 +1,7 @@
 <template>
   <div class="center" style="padding-top: 10px">
     <div class="text-center">
-      <img src="../assets/jais.webp" alt="Jais icon" width="128" height="128" class="circle-border">
+      <img src="img/jais.webp" alt="Jais icon" width="128" height="128" class="circle-border">
       <h1 class="m-0" style="margin-top: 5px">Jaïs</h1>
       <p class="m-0 muted" style="padding: 5px 1rem">Ne manquez aucune sortie d'animé en étant toujours au courant.</p>
 
