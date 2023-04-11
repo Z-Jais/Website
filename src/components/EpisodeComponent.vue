@@ -9,7 +9,8 @@
                    :src="`https://beta-api.ziedelth.fr/platforms/attachment/${episode.platform.uuid}`"
                    class="platform-image circle-border"
                    height="25"
-                   width="25">
+                   width="25"
+                   loading="lazy">
               {{ episode.platform.name }}
             </div>
           </a>
@@ -34,14 +35,15 @@
             <img :alt="`${episode.anime.name} image`"
                  :src="`https://beta-api.ziedelth.fr/animes/attachment/${episode.anime.uuid}`" class="image"
                  height="500"
-                 width="350">
+                 width="350"
+                 loading="lazy">
           </router-link>
         </div>
       </div>
 
       <a :href="episode.url" target="_blank">
         <img v-if="!imageError" :src="`https://beta-api.ziedelth.fr/episodes/attachment/${this.episode.uuid}`"
-             alt="Episode image" class="image mt-1" height="360" width="640" @error="imageError = true">
+             alt="Episode image" class="image mt-1" height="360" width="640" @error="imageError = true" loading="lazy">
         <div v-else class="mt-1 bold border"
              style="background-color: #000000; color: #ffffff; padding: 10px; width: 100%; min-height: 340px; text-align: center;">
           Image indisponible
