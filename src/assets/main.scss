@@ -1,0 +1,64 @@
+:root {
+  --logo-size: 32px;
+  --line-height: 1.5;
+
+  --light: #F2EBDC;
+  --dark: #59413C;
+  --variant: #A64149;
+
+  --episode-line-height: 25px;
+}
+
+body {
+  font-family: Nunito, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --light: #1E1E1E;
+    --dark: #F2EBDC;
+    --variant: #A64149;
+  }
+
+  body {
+    background-color: black;
+  }
+
+  * {
+    color: white;
+  }
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--variant);
+  margin: 0 auto;
+  width: 95%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-border {
+  border-radius: 50%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.muted {
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.m-0 {
+  margin: 0;
+}
