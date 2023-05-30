@@ -6,6 +6,10 @@
   --dark: #59413C;
   --variant: #A64149;
 
+  --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --card-border-color: #eaeaea;
+  --background: white;
+
   --episode-line-height: 25px;
 }
 
@@ -15,29 +19,27 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
+  background-color: #f1f1f1;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --light: #1E1E1E;
+    --light: #000;
     --dark: #F2EBDC;
     --variant: #A64149;
+
+    --background: black;
+    --card-border-color: #222;
+    --shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
   }
 
   body {
-    background-color: black;
+    background-color: #111;
   }
 
   * {
     color: white;
   }
-}
-
-hr {
-  border: 0;
-  border-top: 1px solid var(--variant);
-  margin: 0 auto;
-  width: 95%;
 }
 
 .center {
