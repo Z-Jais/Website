@@ -19,20 +19,12 @@
         </router-link>
         <div class="bold mt-1">{{ episode.title || '¯\_(ツ)_/¯' }}</div>
         <div class="mt-1">{{ information }}</div>
-        <div class="mt-1 duration">
-          <svg height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M216 104H100.8l111.3-29.8a7.9 7.9 0 0 0 4.8-3.8a7.5 7.5 0 0 0 .8-6l-8.3-30.9a15.8 15.8 0 0 0-19.5-11.3L35.3 63.6A15.9 15.9 0 0 0 24 83.2l8 29.9V200a16 16 0 0 0 16 16h160a16 16 0 0 0 16-16v-88a8 8 0 0 0-8-8Zm-87-49l29.4 17l-47.7 12.8l-29.4-17Zm65-17.4l6.2 23.2l-20 5.3l-29.4-16.9ZM59.4 73.7l29.4 16.9l-43.1 11.6L39.4 79ZM208 200H48v-80h160v80Z"
-                fill="currentColor"/>
-          </svg>
-          {{ duration }}
-        </div>
       </div>
 
-      <div class="col-2">
+      <div class="col-2 text-right">
         <router-link :to="animeLink">
           <img :alt="`${episode.anime.name} image`"
-               :src="`https://beta-api.ziedelth.fr/animes/attachment/${episode.anime.uuid}`" class="image"
+               :src="`https://beta-api.ziedelth.fr/animes/attachment/${episode.anime.uuid}`" class="image anime-image"
                height="500"
                loading="lazy"
                width="350">
@@ -41,12 +33,18 @@
     </div>
 
     <a :href="episode.url" target="_blank">
-      <img v-if="!imageError" :src="`https://beta-api.ziedelth.fr/episodes/attachment/${this.episode.uuid}`"
-           alt="Episode image" class="image mt-1" height="360" loading="lazy" width="640"
-           @error="imageError = true">
-      <div v-else class="mt-1 bold border"
-           style="background-color: #000000; color: #ffffff; padding: 10px; width: 100%; min-height: 340px; text-align: center;">
-        Image indisponible
+      <div class="image-container">
+        <img v-if="!imageError" :src="`https://beta-api.ziedelth.fr/episodes/attachment/${this.episode.uuid}`"
+             alt="Episode image" class="image mt-1" height="360" loading="lazy" width="640"
+             @error="imageError = true">
+        <div v-else class="mt-1 bold border"
+             style="background-color: #000000; color: #ffffff; padding: 10px; width: 100%; min-height: 340px; text-align: center;">
+          Image indisponible
+        </div>
+
+        <div class="duration">
+          {{ duration }}
+        </div>
       </div>
     </a>
 
@@ -203,10 +201,8 @@ export default {
   border-radius: 3px;
 }
 
-.duration {
-  display: flex;
-  align-items: center;
-  gap: 5px;
+.text-right {
+  text-align: right;
 }
 
 .anime-name {
@@ -214,8 +210,28 @@ export default {
   text-decoration: none;
 }
 
+.anime-image {
+  width: 80%;
+}
+
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.image-container {
+  position: relative;
+
+  .duration {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
 }
 </style>
