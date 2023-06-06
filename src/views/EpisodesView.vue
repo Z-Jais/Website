@@ -40,13 +40,7 @@ export default {
       const data = await response.json();
       this.episodes.push(...data);
     },
-  },
-  async mounted() {
-    this.isLoading = true;
-    await this.getEpisodes();
-    this.isLoading = false;
-
-    const handleScroll = async () => {
+    async handleScroll() {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const bottomOfWindow = Math.abs(scrollTop + window.innerHeight - document.documentElement.offsetHeight) <= 5;
 
@@ -58,10 +52,15 @@ export default {
         await this.getEpisodes();
         this.isScrollLoading = false;
       }
-    };
+    }
+  },
+  async mounted() {
+    this.isLoading = true;
+    await this.getEpisodes();
+    this.isLoading = false;
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('touchmove', handleScroll);
+    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('touchmove', this.handleScroll);
   },
 }
 </script>

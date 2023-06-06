@@ -55,6 +55,20 @@ export default {
         return "";
       }
 
+      this.sortSimulcasts(simulcasts);
+
+      const array = [];
+
+      for (const simulcast of simulcasts) {
+        const season = this.getSeason(simulcast);
+        array.push(`${season} ${simulcast.year}`);
+      }
+
+      return array.join(" - ");
+    },
+  },
+  methods: {
+    sortSimulcasts(simulcasts) {
       simulcasts.sort((a, b) => {
         if (a.year > b.year) {
           return 1;
@@ -72,18 +86,21 @@ export default {
           }
         }
       });
-
-      const array = [];
-
-      for (const simulcast of simulcasts) {
-        const season = simulcast.season === "WINTER" ? "Hivers" : simulcast.season === "SPRING" ? "Printemps" : simulcast.season === "SUMMER" ? "Été" : "Automne";
-        array.push(`${season} ${simulcast.year}`);
-      }
-
-      return array.join(" - ");
     },
-  },
-  methods: {
+    getSeason(simulcast) {
+      switch (simulcast.season) {
+        case "WINTER":
+          return "Hivers";
+        case "SPRING":
+          return "Printemps";
+        case "SUMMER":
+          return "Été";
+        case "AUTUMN":
+          return "Automne";
+        default:
+          return "";
+      }
+    },
     async getEpisodes() {
       if (!this.canLoadMore) {
         return;
@@ -103,13 +120,7 @@ export default {
         this.canLoadMore = false;
       }
     },
-  },
-  async mounted() {
-    this.isLoading = true;
-    await this.getEpisodes();
-    this.isLoading = false;
-
-    const handleScroll = async () => {
+    async handleScroll() {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const bottomOfWindow = Math.abs(scrollTop + window.innerHeight - document.documentElement.offsetHeight) <= 5;
 
@@ -121,10 +132,15 @@ export default {
         await this.getEpisodes(false);
         this.isScrollLoading = false;
       }
-    };
+    }
+  },
+  async mounted() {
+    this.isLoading = true;
+    await this.getEpisodes();
+    this.isLoading = false;
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('touchmove', handleScroll);
+    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('touchmove', this.handleScroll);
   },
 }
 </script>

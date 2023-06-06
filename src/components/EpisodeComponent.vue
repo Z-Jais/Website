@@ -232,6 +232,7 @@ a {
     border-radius: 3px;
     font-size: 0.8rem;
     font-weight: bold;
+    color: #ffffff;
   }
 }
 </style>
