@@ -24,7 +24,7 @@
       <div class="col-2 text-right">
         <router-link :to="animeLink">
           <img :alt="`${episode.anime.name} image`"
-               :src="`https://beta-api.ziedelth.fr/animes/attachment/${episode.anime.uuid}`" class="image anime-image"
+               :src="`${Config.URL}animes/attachment/${episode.anime.uuid}`" class="image anime-image"
                height="500"
                loading="lazy"
                width="350">
@@ -34,11 +34,11 @@
 
     <a :href="episode.url" target="_blank">
       <div class="image-container">
-        <img v-if="!imageError" :src="`https://beta-api.ziedelth.fr/episodes/attachment/${this.episode.uuid}`"
+        <img v-if="!imageError" :src="`${Config.URL}episodes/attachment/${this.episode.uuid}`"
              alt="Episode image" class="image mt-1" height="360" loading="lazy" width="640"
              @error="imageError = true">
-        <div v-else class="mt-1 bold border"
-             style="background-color: #000000; color: #ffffff; padding: 10px; width: 100%; min-height: 340px; text-align: center;">
+        <div v-else class="mt-1 bold border image"
+             style="background-color: #000000; color: #ffffff; padding: 10px; min-height: 340px; text-align: center;">
           Image indisponible
         </div>
 
@@ -53,6 +53,8 @@
 </template>
 
 <script>
+import Config from "@/config";
+
 export default {
   name: "EpisodeComponent",
   props: {
@@ -67,6 +69,9 @@ export default {
     };
   },
   computed: {
+    Config() {
+      return Config
+    },
     animeLink() {
       return `/anime/${this.episode.anime.uuid}`;
     },
