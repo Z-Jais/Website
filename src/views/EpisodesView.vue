@@ -62,5 +62,9 @@ export default {
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('touchmove', this.handleScroll);
   },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('touchmove', this.handleScroll);
+  }
 }
 </script>

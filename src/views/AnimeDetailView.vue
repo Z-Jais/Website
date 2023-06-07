@@ -6,7 +6,7 @@
   <div v-else-if="anime.uuid != null">
     <div class="header">
       <img :alt="`${anime.name} image`"
-           :src="`https://beta-api.ziedelth.fr/animes/attachment/${anime.uuid}`" class="image"
+           :src="`${Config.URL}animes/attachment/${anime.uuid}`" class="image"
            height="500"
            width="350">
 
@@ -48,6 +48,9 @@ export default {
     }
   },
   computed: {
+    Config() {
+      return Config
+    },
     simulcasts() {
       const simulcasts = this.anime.simulcasts;
 
@@ -142,6 +145,10 @@ export default {
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('touchmove', this.handleScroll);
   },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('touchmove', this.handleScroll);
+  }
 }
 </script>
 
