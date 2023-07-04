@@ -116,6 +116,17 @@ export default {
       }
 
       const data = await response.json();
+
+      if (data.length === 0) {
+        if (this.anime.uuid === null || this.anime.uuid === undefined) {
+          this.$router.push('/404');
+        } else {
+          this.canLoadMore = false;
+        }
+
+        return;
+      }
+
       this.anime = data[0].anime;
       this.episodes.push(...data);
 
