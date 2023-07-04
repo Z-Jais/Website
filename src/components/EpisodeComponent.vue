@@ -142,9 +142,9 @@ export default {
         return 'Il y a ' + hours + ' heure' + (hours > 1 ? 's' : '');
       } else if (minutes > 0) {
         return 'Il y a ' + minutes + ' minute' + (minutes > 1 ? 's' : '');
-      } else {
-        return 'Il y a ' + seconds + ' seconde' + (seconds > 1 ? 's' : '');
       }
+
+      return "Il y a à l'instant";
     }
   }
 }
