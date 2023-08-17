@@ -1,7 +1,7 @@
 <template>
   <div class="center" style="padding-top: 10px">
     <div class="text-center">
-      <img alt="Jais icon" class="banner" src="../../public/img/jais_banner.webp"/>
+      <img alt="Jais icon" class="banner" src="../../public/img/jais_banner.webp" />
 
       <div style="margin: 25px 0">
         <h1 class="m-0">Jaïs</h1>
@@ -20,8 +20,6 @@
         <a href='https://play.google.com/store/apps/details?id=fr.ziedelth.jais&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img
             alt='Disponible sur Google Play' src='../assets/badge_playstore.png'
             style="width: 12.5rem"/></a>
-        <img alt='Disponible sur Google Play' src='../assets/badge_apk.png' style="width: 12.5rem"/>
-        <img alt='Disponible sur Google Play' src='../assets/badge_windows.png' style="width: 12.5rem"/>
       </div>
     </div>
   </div>

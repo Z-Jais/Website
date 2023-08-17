@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /attachments/
+Sitemap: https://jais.ziedelth.fr/sitemap.xml
