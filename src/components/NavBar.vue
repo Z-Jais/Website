@@ -17,6 +17,7 @@ export default {
       links: [
         {name: 'Accueil', to: '/'},
         {name: 'Épisodes', to: '/episodes'},
+        {name: 'Simulcast', to: '/simulcast/test'},
       ]
     }
   }
