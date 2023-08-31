@@ -10,10 +10,34 @@
 
 <script>
 import NavBar from "@/components/NavBar";
+import Config from "@/config";
 
 export default {
   name: 'App',
   components: {NavBar},
+  methods: {
+    updateCanonical(url) {
+      const head = document.getElementsByTagName('head')[0];
+      let element = document.querySelector('link[rel="canonical"]') || null;
+
+      if (element == null) {
+        element = document.createElement('link');
+        head.appendChild(element);
+      }
+
+      element.setAttribute('rel', 'canonical');
+      element.setAttribute('href', url);
+    }
+  },
+  created() {
+    this.$watch(
+        () => this.$route.params,
+        () => {
+          this.updateCanonical(Config.HOST_NAME + this.$route.path);
+        },
+        {immediate: true}
+    )
+  }
 }
 </script>
 
