@@ -63,4 +63,4 @@ jobs:
 
       - name: SSH Commands
         run: |
-          ssh -C -p 2222 ${{ secrets.SSH_DESTINATION }} "docker pull localhost:5000/jais-website:latest && cd ${{ secrets.SSH_FOLDER }} && docker compose down jais-website && docker compose up jais-website -d"
+          ssh -C -p 2222 ${{ secrets.SSH_DESTINATION }} "docker pull localhost:5000/jais-website:latest && cd ${{ secrets.SSH_FOLDER }} && docker compose down jais-website && docker compose up -d"
